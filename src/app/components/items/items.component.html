@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6" *ngFor="let item of items; let i = index;">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <span class="card-text mr-sm-2">{{ item.price }}</span>
+          <p class="card-text">{{ item.info }}</p>
+          <button class="btn btn-primary  active mr-2" (click)="item.infoShow = !item.infoShow">Reviews ({{ item.review.length }})</button>
+          <button class="btn btn-secondary active"  (click)="deleteCard(i)">Delete</button>
+        </div>
+      </div>
+      <div class="info alert alert-dark" *ngIf="item.infoShow" >
+          <!-- <div class="info-{{ item.id }} alert alert-dark"> -->
+        <div class="review-show" *ngFor="let rew of item.review">
+          <h6>{{  rew.name }} say:</h6>
+          <blockquote>{{ rew.text }}</blockquote>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-info" *ngIf="!items.length">No one product not found</div>
+  </div>
+</div>
