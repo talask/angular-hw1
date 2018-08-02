@@ -51,7 +51,7 @@ export class ItemsComponent implements OnInit {
     name: "Name Product 4",
     price: "$126.14",
     info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem sit amet consectetur adipisicing elit.",
-    id: 4 ,
+    id: 4,
     review: [
       {
         name: "buyer 5",
@@ -69,8 +69,12 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit() {
   }
-  deleteCard(index) {
-   console.log(index);
-   this.items.splice(index, 1);
+
+  deleteCard(id) {
+      for (let i in this.items) {
+          if(this.items[i].id === id) {
+              this.items.splice(Number(i), 1);
+          }
+      }
   }
 }
